@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <title>{{title}}</title>
+</head>
+<body>
+  <div class="container">
+    <h1>{{title}}</h1>
+    <form action="/add" method="POST" >
+      <legend>Agrega una tarea</legend>
+      <div class="form-group">
+        <input type="text" name="title" id="title" class="form-control">
+      </div>
+      <div class="form-group">
+        <textarea placeholder="Agrega una descripcion" class="form-control" name="description" id="" cols="30" rows="1"></textarea>
+      </div>
+      <button class="btn btn-primary">Agregar</button>
+    </form>
+    <hr>
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>titulo</th>
+          <th>descripcion</th>
+          <th>operacion</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each tasks}}
+          <tr>
+            <td>{{_id}}</td>
+            <td>{{title}}</td>
+            <td>{{description}}</td>
+            <td>
+              {{#if status}}
+                <a class="btn btn-success" href="/turn/{{_id}}">Hecho</a>
+              {{else}}
+                <a class="btn btn-dark" href="/turn/{{_id}}">No hecho</a>
+              {{/if}}
+              <a id="del" class="btn btn-danger" href="/del/{{_id}}">Eliminar</a>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+
+</body>
+  <script>
+    document.getElementById('title').focus()
+  </script>
+</html>
