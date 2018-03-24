@@ -5,7 +5,7 @@ module.exports = function () {
   let db
 
   if (!db) {
-    db = mongoose.connect('mongodb://localhost/crud-example')
+    db = mongoose.connect('mongodb://Fairplaay:huraCAN123@ds123399.mlab.com:23399/crudnodejesusg')
   }
 
   var Task = new Schema({
